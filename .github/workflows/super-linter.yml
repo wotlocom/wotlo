@@ -65,5 +65,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           LINTER_RULES_PATH: .
           DEFAULT_BRANCH: main
-          FILTER_REGEX_EXCLUDE: "docs/photoswipe/.*"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
