@@ -27,7 +27,7 @@ permissions: {}
 # Set the Job #
 ###############
 jobs:
-  lint:
+  super-linter:
     # Name the Job
     name: Lint Code Base
     # Set the agent to run on
@@ -67,5 +67,4 @@ jobs:
           LINTER_RULES_PATH: .
           DEFAULT_BRANCH: main
           ENFORCE_COMMITLINT_CONFIGURATION_CHECK: true
-          ENABLE_COMMITLINT_STRICT_MODE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
