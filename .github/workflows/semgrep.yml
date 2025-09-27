@@ -196,6 +196,16 @@ jobs:
             --config p/test-pinned-version \
             --config p/typescript \
             --config p/xss
+          # FIXME workaround for https://github.com/semgrep/semgrep/issues/10834
+          # Semgrep security-severity is a textual level but GitHub expects a numerical score.
+          sed -i -e '\
+            s/"security-level":"None"/"security-level":0.0/g; \
+            s/"security-level":"Info"/"security-level":0.0/g; \
+            s/"security-level":"Low"/"security-level":3.9/g; \
+            s/"security-level":"Medium"/"security-level":6.9/g; \
+            s/"security-level":"High"/"security-level":8.9/g; \
+            s/"security-level":"Critical"/"security-level":10.0/g; \
+            ' semgrep-results.sarif
       - name: Upload Semgrep scan results to GitHub Security tab
         if: ${{ github.event_name != 'pull_request' }}
         uses: github/codeql-action/upload-sarif@192325c86100d080feab897ff886c34abd4c83a3 # v3.29.5
