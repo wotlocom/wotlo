@@ -199,12 +199,12 @@ jobs:
           # FIXME workaround for https://github.com/semgrep/semgrep/issues/10834
           # Semgrep security-severity is a textual level but GitHub expects a numerical score.
           sed -i -e '\
-            s/"security-severity":"None"/"security-severity":0.0/g; \
-            s/"security-severity":"Info"/"security-severity":0.0/g; \
-            s/"security-severity":"Low"/"security-severity":3.9/g; \
-            s/"security-severity":"Medium"/"security-severity":6.9/g; \
-            s/"security-severity":"High"/"security-severity":8.9/g; \
-            s/"security-severity":"Critical"/"security-severity":10.0/g; \
+            s/"security-severity":"None"/"security-severity":0.0/Ig; \
+            s/"security-severity":"Info"/"security-severity":0.0/Ig; \
+            s/"security-severity":"Low"/"security-severity":3.9/Ig; \
+            s/"security-severity":"Medium"/"security-severity":6.9/Ig; \
+            s/"security-severity":"High"/"security-severity":8.9/Ig; \
+            s/"security-severity":"Critical"/"security-severity":10.0/Ig; \
             ' semgrep-results.sarif
       - name: Upload Semgrep scan results to GitHub Security tab
         if: ${{ github.event_name != 'pull_request' }}
