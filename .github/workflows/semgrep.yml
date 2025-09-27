@@ -32,8 +32,8 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
+          # Do not use --config r/all as it includes rules written by unknown authors
           semgrep ci --metrics=off --baseline-commit --code --error \
-            # Do not use --config r/all as it includes rules written by unknown authors \
             --config p/apex \
             --config p/auto \
             --config p/brakeman \
@@ -117,8 +117,8 @@ jobs:
         run: |
           set -euo pipefail
           IFS=$'\n\t'
+          # Do not use --config r/all as it includes rules written by unknown authors
           semgrep scan --metrics=off --sarif --sarif-output=semgrep-results.sarif \
-            # Do not use --config r/all as it includes rules written by unknown authors \
             --config p/apex \
             --config p/auto \
             --config p/brakeman \
